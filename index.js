@@ -1,3 +1,67 @@
+//my code 
+//Capitalize the first letter of each word in a string
+const { capitalizeWords} = require('./index');
+describe('capitalizeWords', () => {
+    test('should capitalize the first letter of each word', () => {
+        expect(capitalizeWords('hello world')).toBe('Hello World');
+    });
+});
+
+//edge case: empty string
+test('should return an empty string if input is empty', () => {
+    expect(capitalizeWords('')).toBe('');
+});
+   test('should handle strings with special characters', () => {
+        expect(capitalizeWords('hello-world')).toBe('Hello-World');
+    }).toBe('Hello-World'); 
+
+    test('should be handle single word', () => {
+        expect(capitalizeWords('hello')).toBe('Hello');
+    }).toBe('javascript');
+
+    
+
+//filetr active user
+const { filterActiveUsers } = require('../index');
+
+describe('filterActiveUsers', () => {
+  const users = [
+    { name: "Alice", isActive: true },
+    { name: "Bob", isActive: false },
+    { name: "Charlie", isActive: true }
+  ];
+
+  test('should correctly filter active users from an array', () => {
+    const active = filterActiveUsers(users);
+    expect(active).toHaveLength(2);
+    expect(active[0].name).toBe("Alice");
+  });
+
+  test('should return an empty array if no users are active', () => {
+    const inactiveUsers = [{ name: "Bob", isActive: false }];
+    expect(filterActiveUsers(inactiveUsers)).toEqual([]);
+  });
+
+  test('should return an empty array if the input array is empty', () => {
+    expect(filterActiveUsers([])).toEqual([]);
+  });
+});
+
+// log action
+const { logAction } = require('../index');
+
+describe('logAction', () => {
+  test('should generate the correct log string', () => {
+    const result = logAction("login", "Alice");
+    expect(result).toMatch(/User Alice performed login at/);
+  });
+
+  test('should throw or handle missing action or username', () => {
+    // Depending on your index.js implementation, 
+    // check for null or empty strings
+    expect(logAction("", "Alice")).toBeFalsy(); 
+  });
+});
 
 // Utility Functions
 
